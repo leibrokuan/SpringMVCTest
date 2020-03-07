@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+   <select id="checkuserLoginDao" resultType="pojo.User" >
+       select * from t_user2 where uname=#{0} and pwd=#{1}
+   </select>
+    <update id="updPwd" >
+        update t_user2 set pwd = #{0} where uid = #{1}
+    </update>
+
+    <select id="getUserList" resultType="pojo.User">
+        select * from t_user2
+    </select>
+
+    <insert id="insUser" parameterType="pojo.User">
+        insert into t_user2 values (default ,#{uname},#{pwd},#{sex},#{age},#{birth})
+    </insert>
+</mapper>
